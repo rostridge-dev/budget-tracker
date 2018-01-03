@@ -1,0 +1,41 @@
+.navbar {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+div#navbar-user {
+	width: 100%;
+	padding-top: 5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-color: #3d3f3f;
+	font-size: 90%;
+}
+
+div#navbar-user a:hover {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.gutter-top {
+	margin-top: 20px;
+}
+
+.flot-x-axis .tickLabel {
+	font-size: 75%;
+}
+
+.required:after {
+	color: #c09853;
+	content: " (required)";
+}
+
+h1.badge-icon-large {
+	font-size:8em;
+}
+
+.well.well-no-bg {
+	background-color: #ffffff;
+}
