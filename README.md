@@ -1,4 +1,4 @@
-# Running Log Classic (budget-tracker)
+# Budget Tracker (budget-tracker)
 Simple budget tracking software with a focus on usage with mobile devices
 
 ## Built with:
