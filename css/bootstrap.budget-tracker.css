@@ -23,8 +23,8 @@ div#navbar-user a:hover {
 	margin-top: 20px;
 }
 
-.flot-x-axis .tickLabel {
-	font-size: 75%;
+.gutter-bottom {
+	margin-bottom: 20px;
 }
 
 .required:after {
@@ -32,10 +32,7 @@ div#navbar-user a:hover {
 	content: " (required)";
 }
 
-h1.badge-icon-large {
-	font-size:8em;
-}
-
-.well.well-no-bg {
-	background-color: #ffffff;
+.no-margins {
+	margin: 0px;
+	padding: 0px;
 }
