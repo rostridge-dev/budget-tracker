@@ -218,5 +218,43 @@ class Budget_model extends MY_Model {
 		return $totals;
 		
 	}
+	
+	/**
+	 * Add in the categories for the current budget, using last month's budget for carryover values
+	 *
+	 * @param object $previousBudget An object that stores the budget from the month prior to this one
+	 * @return boolean
+	 */
+	public function addCategories($previousBudget) {
+		$ci =& get_instance();
+		$categories = array();
+		
+		// Get the budget details
+		$previousAllowances = $previousBudget->getCategoryAllowances();
+		$previousTotals = $previousBudget->getCategoryTotals();
+		
+		$query = $ci->db->get_where('categories',array('active'=>true,'deleted'=>NULL));
+		foreach ($query->result() as $row) {
+			$alias = "category".$row->id;
+			$ci->load->model('Category_model',$alias);
+			$category = $ci->{$alias}->load($row->id);
+			$categories[$row->id] = $category;
+		}
+		
+		foreach ($categories as $category_id => $category) {
+			$value = round($previousAllowances[$category->getID()]->getValue() - $previousTotals[$category->getID()],2);
+			$data = array(
+				'budget_id' => $this->_id,
+				'category_id' => $category->getID(),
+				'carryover' => $value,
+				'active' => $this->_active			
+			);
+			
+			$ci->db->insert('budget_categories',$data);
+		}
+		
+		return true;
+		
+	}
 
 }
