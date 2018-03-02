@@ -25,7 +25,7 @@ class Budgets extends MY_Controller {
 		$query = $this->db->get_where('budgets',array('year'=>$currentYear,'month'=>$previousMonth,'active'=>true,'deleted'=>NULL));
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
-				$alias = "budget".$row->id;
+				$alias = "budget_old".$row->id;
 				$ci->load->model('Budget_model',$alias);
 				$budget = $ci->{$alias}->load($row->id);
 			}
