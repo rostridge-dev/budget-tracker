@@ -156,6 +156,15 @@ class Category_model extends MY_Model {
 	}
 	
 	/**
+	 * Get the active status for the category
+	 *
+	 * @return boolean
+	 */
+	public function getActive() {
+		return $this->_active;
+	}
+	
+	/**
 	 * Set the active status for the category
 	 *
 	 * @param boolean $value The active status of the category

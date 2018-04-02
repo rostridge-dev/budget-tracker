@@ -244,6 +244,15 @@ class Entry_model extends MY_Model {
 	}
 	
 	/**
+	 * Get the active status for the entry
+	 *
+	 * @return boolean
+	 */
+	public function getActive() {
+		return $this->_active;
+	}
+	
+	/**
 	 * Set the active status for the entry
 	 *
 	 * @param boolean $value The active status of the entry

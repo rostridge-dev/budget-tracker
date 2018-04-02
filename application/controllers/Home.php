@@ -14,21 +14,28 @@ class Home extends MY_Controller {
 		$currentYear = date("Y");
 		$this->load->model('Budget_model');
 		
+		$data = array();
+		
 		$query = $this->db->get_where('budgets',array('year'=>$currentYear,'month'=>$currentMonth,'active'=>true,'deleted'=>NULL));
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
 				$budget = $this->Budget_model->load($row->id);
 			}
+			
+			// Get the budget details
+			$data['budget_allowances'] = $budget->getCategoryAllowances();
+			$data['budget_totals'] = $budget->getCategoryTotals();
+			
+			// Load the view for this controller
+			$data['title'] = "Home";
+			$this->template->view('home',$data);
+			
+		} else {
+			
+			// Load the view for this controller
+			$data['title'] = "Home";
+			$this->template->view('home_rollover',$data);
+			
 		}
-		
-		$data = array();
-		
-		// Get the budget details
-		$data['budget_allowances'] = $budget->getCategoryAllowances();
-		$data['budget_totals'] = $budget->getCategoryTotals();
-		
-		// Load the view for this controller
-		$data['title'] = "Home";
-		$this->template->view('home',$data);
 	}
 }

@@ -156,6 +156,15 @@ class Budget_model extends MY_Model {
 	}
 	
 	/**
+	 * Get the active status for the budget
+	 *
+	 * @return boolean
+	 */
+	public function getActive() {
+		return $this->_active;
+	}
+	
+	/**
 	 * Set the active status for the budget
 	 *
 	 * @param boolean $value The active status of the budget
