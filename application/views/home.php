@@ -47,6 +47,29 @@
 			</div>
 		
 <?php
+		} else {
+			$textStyle = "text-danger";
+			$barStyle = "progress-bar-danger";
+			$suffix = " overdrawn";
+			$value = 100;
+			$message =  "$".number_format(round($category->getValue() - $budget_totals[$category->getID()],2),2).$suffix;
+?>
+
+			<div class="row gutter-bottom">
+				<div class="col-xs-7">
+					<p class="no-margins"><?php echo $category->getName() ?></p>
+				</div>
+				<div class="col-xs-5">
+					<p class="text-right no-margins <?php echo $textStyle; ?>"><?php echo $message; ?></p>
+				</div>
+				<div class="col-xs-12">
+					<div class="progress">
+						<div class="progress-bar <?php echo $barStyle; ?>" role="progressbar" aria-valuenow="<?php echo $value; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $value; ?>%;"></div>
+					</div>
+				</div>
+			</div>
+
+<?php		
 		}
 	}
 ?>
