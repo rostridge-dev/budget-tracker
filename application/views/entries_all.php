@@ -1,6 +1,7 @@
 <?
 if (!empty($users)) {
 	foreach($users as $userID=>$userName) {
+		$userEntries = 0;
 ?>
 
 		<div class="row">
@@ -21,6 +22,7 @@ if (!empty($users)) {
 		if (!empty($entries)) {
 			foreach($entries as $id=>$entry) {
 				if ($entry->getUserID() == $userID) {
+					$userEntries++;
 ?>
 						<tr>
 							<td><p><small><a href="<?php echo base_url("entries/edit/".$entry->getID()); ?>"><?php echo $entry->getDate(); ?></small></p></a></td>
@@ -34,9 +36,16 @@ if (!empty($users)) {
 		} else {
 ?>
 						<tr>
-							<td colspan="6"><p class="text-center">There are no entries entered into the system. Please add at least one entry.</p></td>
+							<td colspan="4"><p class="text-center">There are no entries entered into the system. Please add at least one entry.</p></td>
 						</tr>
 <?	
+		}
+		if ($userEntries == 0) {
+?>
+						<tr>
+							<td colspan="4"><p class="text-center">There is no data for this user over the last 100 entries.</p></td>
+						</tr>
+<?				
 		}
 ?>
 

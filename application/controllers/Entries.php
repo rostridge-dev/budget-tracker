@@ -36,7 +36,7 @@ class Entries extends MY_Controller {
 		// Get the list of active entries
 		$entries = array();
 		$this->db->order_by('date','DESC');
-		$query = $this->db->get_where('entries',array('active'=>true,'deleted'=>NULL));
+		$query = $this->db->get_where('entries',array('active'=>true,'deleted'=>NULL),100);
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
 				$alias = "entries".$row->id;
